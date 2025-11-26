@@ -1,4 +1,4 @@
-# simulate_telematics.py
+
 
 import time
 from datetime import datetime, timezone
@@ -52,11 +52,11 @@ def send_point(vehicle_id, trip_id, lat, lon, speed, o_lat, o_lon, d_lat, d_lon)
         r = requests.post(f"{API_BASE}/ingest_telematics", json=payload, timeout=5)
         r.raise_for_status()
     except Exception as e:
-        print("❌ Failed to send telemetry:", e)
+        print(" Failed to send telemetry:", e)
 
 
 if __name__ == "__main__":
-    print("🚚 Starting multi-truck telematics simulation...")
+    print(" Starting multi-truck telematics simulation...")
 
     trucks = []
     for i in range(1, NUM_TRUCKS + 1):
@@ -110,8 +110,8 @@ if __name__ == "__main__":
 
                 t["step"] += 1
 
-            print("✔ Telemetry sent for all trucks.")
+            print(" Telemetry sent for all trucks.")
             time.sleep(SLEEP_SEC)
 
     except KeyboardInterrupt:
-        print("\n🛑 Simulation stopped.")
+        print("\n Simulation stopped.")
